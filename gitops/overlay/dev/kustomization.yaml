@@ -22,7 +22,7 @@ patches:
     target:
       kind: Deployment
 
-# this work for each microservice if the replicas are not set to be the same thing across all environments. if they are the same thing across all environments, then we can set the replicas in the base kustomization file and not have to worry about it in the overlay kustomization files.
+# this work for each microservice if the replicas are not set to be the same thing across all environments. (different replica counts for each service)
 # patches:
 #   - patch: |-
 #       apiVersion: apps/v1

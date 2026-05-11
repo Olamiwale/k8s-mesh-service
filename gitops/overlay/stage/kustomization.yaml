@@ -21,7 +21,37 @@ patches:
       kind: Deployment
 
 
+#this is an example of how to use the images field to update the image of a container in the deployment. Each service has its own image from deployment. newName is the name of the image in the registry and the newTag is the tag of the image.
+
 images:
   - name: payment-service
     newName: briitzacr.azurecr.io/payment-service
     newTag: v2
+
+  # - name: payment-service
+  #   newName: briitzacr.azurecr.io/payment-service
+  #   newTag: v2
+
+  # - name: shipping-service
+  #   newName: briitzacr.azurecr.io/shipping-service
+  #   newTag: v2
+
+  # - name: user-service
+  #   newName: briitzacr.azurecr.io/user-service
+  #   newTag: v2
+
+  # - name: order-service
+  #   newName: briitzacr.azurecr.io/order-service
+  #   newTag: v2
+
+  # - name: notification-service
+  #   newName: briitzacr.azurecr.io/notification-service
+  #   newTag: v2
+
+  # - name: inventory-service
+  #   newName: briitzacr.azurecr.io/inventory-service
+  #   newTag:  v2
+
+  # - name: cart-service
+  #   newName: briitzacr.azurecr.io/cart-service
+  #   newTag: v2

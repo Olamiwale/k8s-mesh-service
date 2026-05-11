@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: payment-deployment-v1
-  namespace: k8s
+  namespace: testing
   labels:
     app: payment-service
     version: v1
@@ -20,7 +20,8 @@ spec:
     spec:
       containers:
         - name: payment-service
-          image: briitzacr.azurecr.io/payment-service:v1
+          image: payment-service
+          imagePullPolicy: Never      # temporarily set to Never for local development with minikube
           ports:
             - containerPort: 8080
           resources:

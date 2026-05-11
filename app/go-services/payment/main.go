@@ -1,5 +1,14 @@
 package main
-import ( "encoding/json" "fmt" "log" "math/rand" "net/http" "os" "sync" "time" )
+import ( 
+  "encoding/json" 
+  "fmt" 
+  "log" 
+  "math/rand" 
+  "net/http" 
+  "os" 
+  "sync" 
+  "time" 
+)
 
     type Payment struct {
       PaymentID     string    `json:"paymentId"`
