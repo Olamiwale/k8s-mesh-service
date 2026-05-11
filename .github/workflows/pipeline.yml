@@ -15,9 +15,9 @@ jobs:
     - name: Point to minikube docker daemon
       run: eval $(minikube -p minikube docker-env)
 
-    - name: Build product service Docker image
+    - name: Build user service Docker image
       run: |
-            cd app/go-services/product
-            docker build -t product-service .
+            cd app/go-services/user
+            docker build -t user-service .
             
 
