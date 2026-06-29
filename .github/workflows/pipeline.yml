@@ -12,8 +12,14 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
+
+    - name: Create namespace in minikube
+      run: kubectl create namespace testing | echo "Namespace 'testing' already exists."
+
+
     - name: Point to minikube docker daemon
       run: eval $(minikube -p minikube docker-env)
+      
 
     - name: Build user service Docker image
       run: |
