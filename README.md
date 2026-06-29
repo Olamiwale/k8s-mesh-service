@@ -286,3 +286,24 @@ istioctl dashboard kiali
 
 
 DEVOPS ENGINEER 
+
+
+✅ Source Control (Git strategy,Branch protection,PR reviews,CODEOWNERS,Repository standards)
+
+✅ Infrastructure as Code (Terraform,Networking,K8s cluster,Container registry,DB, storage, DNS)
+
+✅ Containerization (Dockerfiles, Multi-stage builds,Image optimization,Health checks)
+
+✅ Kubernetes(Deployments,Services,Ingress/Gateway,Secrets)
+
+✅ CI/CD
+
+✅ Security (Secret management,IAM/RBAC,Scanning,Least privilege,Policy enforcement)
+
+✅ Observability
+
+✅ Reliability (Rolling updates, Canary/Blue-Green deployments)
+
+✅ Operation ( Monitoring, Incident response,Cost optimization)
+
+
