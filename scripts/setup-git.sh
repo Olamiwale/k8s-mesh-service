@@ -17,39 +17,52 @@ else
 fi
 
 echo ""
-echo "Creating branches ....."
-
-DEFAULT_BRANCH=$(git branch --show-current)
+echo ""
 
 
-if [ -z "$DEFAULT_BRANCH" ]; then
-    DEFAULT_BRANCH="main"
+# Ensure main branch exists
+if ! git show-ref --verify --quiet refs/heads/main; then
+    git branch -M main
 fi
 
-git add .
+# Create develop if missing
+if ! git show-ref --verify --quiet refs/heads/develop; then
+    git branch develop
+fi
 
-git checkout -B main
+# Create staging if missing
+if ! git show-ref --verify --quiet refs/heads/staging; then
+    git branch staging
+fi
 
-
-git commit -m "Initial repository setup"
-
-git branch -M main
-git branch develop
-git branch staging
-
-
-
-git push -u origin main
-git push origin develop
-git push origin staging
-
-
-
-
-echo "Branches created."
-
-echo ""
-echo "Current branches"
-
+echo "Current branches:"
 git branch
+
+
+
+
+# DEFAULT_BRANCH=$(git branch --show-current)
+
+# if [ -z "$DEFAULT_BRANCH" ]; then
+#     DEFAULT_BRANCH="main"
+# fi
+
+# git checkout -B main
+
+# git branch -M main
+# git branch develop
+# git branch staging
+
+# git add .
+# git commit -m "Initial repository setup"
+
+# git push -u origin main
+# git push origin develop
+# git push origin staging
+
+# echo "Branches created."
+# echo ""
+# echo "Current branches"
+
+# git branch
 
