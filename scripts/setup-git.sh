@@ -35,7 +35,7 @@ git commit -m "Initial repository setup"
 
 git branch -M main
 
-git branch staging
+
 
 
 
