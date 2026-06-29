@@ -34,9 +34,16 @@ git checkout -B main
 git commit -m "Initial repository setup"
 
 git branch -M main
-
 git branch develop
 git branch staging
+
+
+
+git push -u origin main
+git push origin develop
+git push origin staging
+
+
 
 
 echo "Branches created."
