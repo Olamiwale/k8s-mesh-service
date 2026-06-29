@@ -34,7 +34,7 @@ git checkout -B main
 git commit -m "Initial repository setup"
 
 git branch -M main
-git branch develop
+
 git branch staging
 
 
