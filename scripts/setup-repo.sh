@@ -2,8 +2,12 @@ echo "Repo setup starting..."
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
+echo "Created github/workflows and issue template folder"
+
 mkdir -p "$ROOT_DIR/.github/workflows"
 mkdir -p "$ROOT_DIR/.github/ISSUE_TEMPLATE"
+
+echo "Created codeowner,pull_request"
 
 touch "$ROOT_DIR/.github/CODEOWNERS"
 touch "$ROOT_DIR/.github/pull_request_template.md"
