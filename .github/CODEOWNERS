@@ -1,0 +1,54 @@
+# ==========================================================
+# CODEOWNERS
+# Automatically assigns reviewers based on changed files.
+# The last matching rule takes precedence.
+# ==========================================================
+
+# Default owner for the entire repository
+* @YOUR_GITHUB_USERNAME
+
+# ----------------------------------------------------------
+# GitHub Configuration
+# ----------------------------------------------------------
+
+/.github/ @YOUR_GITHUB_USERNAME
+
+# ----------------------------------------------------------
+# Documentation
+# ----------------------------------------------------------
+
+README.md @YOUR_GITHUB_USERNAME
+
+CONTRIBUTING.md @YOUR_GITHUB_USERNAME
+
+LICENSE @YOUR_GITHUB_USERNAME
+
+# ----------------------------------------------------------
+# Application Services
+# ----------------------------------------------------------
+
+/app/ @YOUR_GITHUB_USERNAME
+
+# ----------------------------------------------------------
+# Kubernetes & Istio
+# ----------------------------------------------------------
+
+/istio/ @YOUR_GITHUB_USERNAME
+
+# ----------------------------------------------------------
+# DevOps Scripts
+# ----------------------------------------------------------
+
+/scripts/ @YOUR_GITHUB_USERNAME
+
+# ----------------------------------------------------------
+# Terraform (Future)
+# ----------------------------------------------------------
+
+/terraform/ @YOUR_GITHUB_USERNAME
+
+# ----------------------------------------------------------
+# Helm Charts (Future)
+# ----------------------------------------------------------
+
+/helm/ @YOUR_GITHUB_USERNAME
