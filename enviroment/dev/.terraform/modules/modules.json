@@ -1,0 +1,1 @@
+{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"ecr","Source":"../../terraform/modules/ecr","Dir":"../../terraform/modules/ecr"},{"Key":"eks","Source":"../../terraform/modules/eks","Dir":"../../terraform/modules/eks"},{"Key":"vpc","Source":"../../terraform/modules/vpc","Dir":"../../terraform/modules/vpc"}]}

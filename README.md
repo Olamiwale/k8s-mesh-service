@@ -154,9 +154,6 @@ E-commerce/
 │     │     └── shipping
 │     └── gateway.yaml
 │
-├── k8s-manifest
-│     ├── deployment/
-│     └── namespace.yaml
 │
 ├── services
 │     ├── go-services
