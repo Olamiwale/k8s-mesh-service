@@ -1,0 +1,92 @@
+name: Deploy to Dev Environment
+
+on:
+  push:
+    branches:
+      - develop
+
+env:
+    AWS_REGION: ${{ secrets.AWS_REGION }}
+    EKS_CLUSTER: ${{ secrets.EKS_CLUSTER_NAME_DEV }}
+
+jobs:
+    build-and-deploy:
+        name: Build, Push and Deploy
+        runs-on: ubuntu-latest
+
+        strategy:
+            matrix:
+                include:
+
+            
+                    - service: product-service
+                      path: app/go-services/product-service
+                    - service: payment-service
+                      path: app/go-services/payment-service
+                    - service: user-service
+                      path: app/go-services/user-service
+                    
+
+                    - service: cart-service
+                      path: app/node-services/cart-service
+                    - service: shipping-service
+                      path: app/node-services/shipping-service
+
+                    
+                    - service: order-service
+                      path: app/python-services/order-service
+                    - service: inventory-service
+                      path: app/python-services/inventory-service
+                    - service: notification-service
+                      path: app/python-services/notification-service
+                      
+
+
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v3
+
+
+              #---------------- Configure AWS credentials --------------------------
+
+            - name: Configure AWS credentials
+              uses: aws-actions/configure-aws-credentials@v2
+              with:
+                aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+                aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+                aws-region: ${{ env.AWS_REGION }}
+
+
+                #------------------------- Login to ECR --------------------------
+
+            - name: Login to ECR
+              id: login-ecr
+              uses: aws-actions/amazon-ecr-login@v1
+
+
+
+                #---------------- Build, tag and push Docker image to ECR-----------
+
+            - name: Build, tag and push Docker image
+              env:
+                ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+                IMAGE_TAG: ${{ github.sha }}
+              run: |
+                docker build -t $ECR_REGISTRY/${{ matrix.service }}:${IMAGE_TAG-dev} ${{ matrix.path }}
+                docker push $ECR_REGISTRY/${{ matrix.service }}:${IMAGE_TAG-dev}
+
+
+            #---------------- Update Kube config --------------------------
+
+            - name: Update Kube config
+              run: aws eks update-kubeconfig --region ${{ env.AWS_REGION }} --name ${{ env.EKS_CLUSTER }}
+
+
+
+            #---------------- Deploy to EKS --------------------------
+
+            - name: Deploy to EKS
+              env:
+                ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+                IMAGE_TAG: ${{ github.sha }}
+              run: kubectl set image deployment/${{ matrix.service }} ${{matrix.service}}=$ECR_REGISTRY/${{matrix.service}}:${IMAGE_TAG-dev} --namespace=dev
